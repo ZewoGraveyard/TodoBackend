@@ -36,7 +36,7 @@ final class InMemoryTodoStore: TodoStore {
 
     func insert(todo: Todo) -> Entity<Todo> {
         defer { idCounter += 1 }
-        let entity = Entity(id: idCounter, url: "\(apiRoot)\(idCounter)", item: todo)
+        let entity = Entity(id: idCounter, item: todo)
         storage[idCounter] = entity
         return entity
     }

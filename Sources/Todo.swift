@@ -41,10 +41,11 @@ extension Todo {
     }
 
     func update(content: StructuredData) -> Todo {
+        let mapper = Mapper(structuredData: content)
         return self.update(
-            title: content.get(optional: "title"),
-            completed: content.get(optional: "completed"),
-            order: content.get(optional: "order")
+            title: mapper.map(optionalFrom: "title"),
+            completed: mapper.map(optionalFrom: "completed"),
+            order: mapper.map(optionalFrom: "order")
         )
     }
 }

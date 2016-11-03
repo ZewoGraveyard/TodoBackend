@@ -32,12 +32,12 @@ To begin, clone the repository (`git clone https://github.com/Zewo/TodoBackend.g
 #### Basic Deployment
 There is a simple Dockerfile in the root of the repository that installs Swift, builds the application, and runs it.
 
-Once you have the Dockerfile configured, build the docker image (`docker build -t zewo/todobackend .`). With the image built, run it using the [`docker run`](https://docs.docker.com/engine/reference/run/) family of commands. For example, `docker run -itd -e API_ROOT="http://localhost:8080/" -p 80:8080 zewo/todobackend` will start a container running the Todo Backend application in the background, and map the containers `8080` port to the machine's `80` (default http) port.
+Once you have the Dockerfile configured, build the docker image (`docker build -t zewo/todobackend .`). With the image built, run it using the [`docker run`](https://docs.docker.com/engine/reference/run/) family of commands. For example, `docker run -itd -e API_ROOT="http://localhost/" -p 80:8080 zewo/todobackend` will start a container running the Todo Backend application in the background, and map the containers `8080` port to the machine's `80` (default http) port.
 
 #### Docker Compose
-When deploying the application to production, you want to store the todos in a real database. With Docker, the recommended way to do this is to use Docker Compose which runs multiple docker containers and allows them to communicate.
+When deploying the application to production, we want to store the todos in a real database. With Docker, the recommended way to do this is to use Docker Compose which runs multiple docker containers and allows them to communicate.
 
-Included in the repository is an example configuration (`docker-compose.yml`). The configuration does need to be adjusted depending on the ip of the deployed application (change the environmental variable API_ROOT). Afterwards, you just need to run `docker-compose up` and Docker handles the rest.
+Included in the repository is an example configuration (`docker-compose.yml`). The configuration does need to be adjusted depending on the ip of the deployed application which should be relfected in the environmental variable API_ROOT. Afterwards, just run `docker-compose up` and Docker will handle the rest. Since PostgreSQL takes some time to start up, you may have to run the command twice.
 
 ## Support
 If you need any help you can join our [Slack](http://slack.zewo.io) and go to the **#help** channel. Or you can create a Github [issue](https://github.com/Zewo/Zewo/issues/new) in our main repository. When stating your issue be sure to add enough details, specify what module is causing the problem and reproduction steps.
